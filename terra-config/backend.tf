@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "pravesh-terra-state-bucket"  # Change if the name already exists. 
-    key            = "eks/terraform.tfstate"       
-    region         = "us-east-1"                   
+    bucket         = "kundan-terraform-state-bucket"
+    key            = "vpc/dev/terraform.tfstate"
+    region         = "us-east-2"
+    dynamodb_table = "kundan-terraform-locks" 
     encrypt        = true
   }
 }

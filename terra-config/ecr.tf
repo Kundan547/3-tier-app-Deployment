@@ -1,8 +1,7 @@
-resource "aws_ecrpublic_repository" "frontend" {
-  repository_name  = "three-tier-frontend"
+resource "aws_ecr_repository" "frontend" {
+  name = "three-tier-frontend"
 }
 
-resource "aws_ecrpublic_repository" "backend" {
-  repository_name  = "three-tier-backend"
-  
+resource "aws_ecr_repository" "backend" {
+  name = "three-tier-backend"
 }
