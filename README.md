@@ -67,15 +67,17 @@ Use region `us-east-1` and output `json`.
 ### 3. Create an S3 Bucket for Terraform State
 
 ```bash
+# 1. Create the bucket (NO create-bucket-configuration for us-east-1)
 aws s3api create-bucket \
   --bucket kundan-terra-state-bucket \
-  --region us-east-1 \
-  --create-bucket-configuration LocationConstraint=us-east-1
+  --region us-east-1
 
+# 2. Enable versioning
 aws s3api put-bucket-versioning \
   --bucket kundan-terra-state-bucket \
   --versioning-configuration Status=Enabled
 
+# 3. Enable encryption
 aws s3api put-bucket-encryption \
   --bucket kundan-terra-state-bucket \
   --server-side-encryption-configuration '{
@@ -85,7 +87,7 @@ aws s3api put-bucket-encryption \
       }
     }]
   }'
-```
+
 
 ---
 
