@@ -1,9 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "kundan-terraform-state-bucket"
-    key            = "vpc/dev/terraform.tfstate"
-    region         = "us-east-2"
-    dynamodb_table = "kundan-terraform-locks" 
-    encrypt        = true
+    bucket  = "kundan-terra-state-bucket"
+    key     = "vpc/dev/terraform.tfstate"
+    region  = "us-east-1"
+    encrypt = true
   }
 }
