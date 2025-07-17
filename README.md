@@ -48,7 +48,7 @@ Make sure you have the following installed and configured:
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/Pravesh-Sudha/3-tier-app-Deployment.git
+git clone https://github.com/Kundan547/3-tier-app-Deployment.git
 cd 3-tier-app-Deployment/
 ```
 
@@ -68,16 +68,16 @@ Use region `us-east-1` and output `json`.
 
 ```bash
 aws s3api create-bucket \
-  --bucket pravesh-terra-state-bucket \
+  --bucket kundan-terra-state-bucket \
   --region us-east-1 \
   --create-bucket-configuration LocationConstraint=us-east-1
 
 aws s3api put-bucket-versioning \
-  --bucket pravesh-terra-state-bucket \
+  --bucket kundan-terra-state-bucket \
   --versioning-configuration Status=Enabled
 
 aws s3api put-bucket-encryption \
-  --bucket pravesh-terra-state-bucket \
+  --bucket kundan-terra-state-bucket \
   --server-side-encryption-configuration '{
     "Rules": [{
       "ApplyServerSideEncryptionByDefault": {
@@ -188,28 +188,6 @@ After testing, you can tear everything down to avoid charges:
 ```bash
 # Delete ECR images manually from AWS Console
 terraform destroy --auto-approve
-aws s3 rm s3://pravesh-terra-state-bucket/eks/terraform.tfstate
+aws s3 rm s3://kundan-terra-state-bucket/eks/terraform.tfstate
 # Then empty and delete the bucket via S3 console
 ```
-
----
-
-## ✨ Author
-
-**Pravesh Sudha**
-AWS Community Builder – Containers | DevOps & Cloud Blogger
-
-* 💻 [Website](https://praveshsudha.com)
-* 🧠 [Blog](https://blog.praveshsudha.com)
-* 🐦 [Twitter](https://x.com/praveshstwt)
-* 💼 [LinkedIn](https://www.linkedin.com/in/pravesh-sudha/)
-
----
-
-## ⭐️ Support & Contribution
-
-If you find this project helpful, please consider giving it a ⭐ on GitHub!
-
-Pull requests and suggestions are welcome 🤝
-
----
