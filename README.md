@@ -118,7 +118,7 @@ Update image URIs in:
 ### 6. Configure and Deploy to EKS
 
 ```bash
-aws eks update-kubeconfig --region us-east-1 --name Three-tier-cloud
+aws eks update-kubeconfig --region us-east-2 --name Three-tier-cloud
 kubectl create namespace workshop
 kubectl config set-context --current --namespace workshop
 
@@ -142,7 +142,7 @@ aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-
 ```bash
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
-eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=Three-tier-cloud --approve
+eksctl utils associate-iam-oidc-provider --region=us-east-2 --cluster=Three-tier-cloud --approve
 ```
 
 ```bash
@@ -151,9 +151,9 @@ eksctl create iamserviceaccount \
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
   --role-name AmazonEKSLoadBalancerControllerRole \
-  --attach-policy-arn=arn:aws:iam::<YOUR-AWS-ACCOUNT-ID>:policy/AWSLoadBalancerControllerIAMPolicy \
+  --attach-policy-arn=arn:aws:iam::435354565011:policy/AWSLoadBalancerControllerIAMPolicy \
   --approve \
-  --region=us-east-1
+  --region=us-east-2
 ```
 
 #### b. Install Helm and Load Balancer Controller
