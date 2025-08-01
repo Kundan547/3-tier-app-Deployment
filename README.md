@@ -117,10 +117,17 @@
 
   ### 6. Configure and Deploy to EKS
 
+<<<<<<< HEAD
   ```bash
   aws eks update-kubeconfig --region us-east-1 --name Three-tier-cloud
   kubectl create namespace workshop
   kubectl config set-context --current --namespace workshop
+=======
+```bash
+aws eks update-kubeconfig --region us-east-2 --name Three-tier-cloud
+kubectl create namespace workshop
+kubectl config set-context --current --namespace workshop
+>>>>>>> 7dedaf5dbb4e76c2e959e8f0dc82706468aa769f
 
   # Apply app deployments
   kubectl apply -f k8s_manifests/frontend-deployment.yaml -f k8s_manifests/frontend-service.yaml
@@ -139,6 +146,7 @@
   aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
   ```
 
+<<<<<<< HEAD
   ```bash
   curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
   sudo mv /tmp/eksctl /usr/local/bin
@@ -155,6 +163,24 @@
     --approve \
     --region=us-east-2
   ```
+=======
+```bash
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl utils associate-iam-oidc-provider --region=us-east-2 --cluster=Three-tier-cloud --approve
+```
+
+```bash
+eksctl create iamserviceaccount \
+  --cluster=Three-tier-cloud \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \
+  --role-name AmazonEKSLoadBalancerControllerRole \
+  --attach-policy-arn=arn:aws:iam::435354565011:policy/AWSLoadBalancerControllerIAMPolicy \
+  --approve \
+  --region=us-east-2
+```
+>>>>>>> 7dedaf5dbb4e76c2e959e8f0dc82706468aa769f
 
   #### b. Install Helm and Load Balancer Controller
 
